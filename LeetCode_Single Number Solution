@@ -1,0 +1,35 @@
+class Solution {
+public:
+    int singleNumber(vector<int>& nums) {
+        
+
+   int i, j, min, temp,n;
+        n=nums.size();
+        
+   for (i = 0; i < n - 1; i++) 
+       {
+          min = i;
+          for (j = i + 1; j < n; j++)
+             if (nums[j] < nums[min])
+                min = j;
+          temp = nums[i];
+          nums[i] = nums[min];
+          nums[min] = temp;
+       }
+        
+     stack <int> s;
+        s.push(INT_MIN);
+        
+        for(i=0;i<=n-1;i++)
+        {
+            if(s.top()==nums[i])
+                s.pop();
+               
+            else
+               s.push(nums[i]);
+
+        }
+
+        return s.top();
+    }
+};
