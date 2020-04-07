@@ -1,0 +1,39 @@
+class Solution {
+public:
+    int countElements(vector<int>& arr) {
+        
+        int i, j, min, temp,n,count=0,dup=0;
+        n=arr.size();
+        
+   for (i = 0; i < n - 1; i++) 
+       {
+          min = i;
+          for (j = i + 1; j < n; j++)
+             if (arr[j] < arr[min])
+                min = j;
+          temp = arr[i];
+          arr[i] = arr[min];
+          arr[min] = temp;
+       }
+        
+        for(i=0;i<n-1;i++)
+        {
+            if(arr[i+1] == (arr[i] +1))
+            
+            {
+                count++;
+                count=count+dup;
+                dup=0;
+                
+            }
+        
+            else if(arr[i+1] == arr[i])
+                dup++;
+            
+            else 
+                dup=0;
+        }
+        
+        return count;
+    }
+};
