@@ -1,0 +1,45 @@
+class Solution {
+public:
+    bool checkValidString(string s) {
+        
+        stack <char> S,star;
+        
+        for(int i=0;i<s.length();i++)
+            {
+                if(s[i]=='(')
+                    S.push(i);
+
+                else if (s[i]=='*')
+                      star.push(i);                //Pushing indexing into stack
+
+                else
+                    {
+                          if(!S.empty())
+                              S.pop();
+                            
+                    else if(!star.empty())
+                         star.pop();                //Considering * as a left parenthesis.
+                    
+                    else
+                        return false;
+                        
+                    }
+
+            }
+        
+          while(!S.empty() && !star.empty())         //Considering * as a right parathesis
+                {
+                        if(S.top() > star.top())
+                            return false;    
+                        star.pop();
+                            S.pop();
+                }
+
+        if(S.empty())
+            return true;
+        
+        else
+            return false;
+        
+    }
+};
