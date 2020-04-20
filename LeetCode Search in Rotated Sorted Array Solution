@@ -1,0 +1,55 @@
+class Solution {
+public:
+   
+    int binarySearch(int begin, int end, vector<int>& nums, int target)    //Function to perform binary search
+
+    {     int mid=0;
+     
+        while(begin<=end)
+            
+            {
+                    mid=(begin + end)/2;
+
+                    if(target==nums[mid])
+                        return mid;
+
+                    else if(target>nums[mid])
+                        begin=mid+1;
+
+                    else 
+                        end=mid-1;    
+                 }
+        
+        return -1;
+    }
+    
+    int search(vector<int>& nums, int target) {       
+        
+        int begin=0,end=nums.size() -1,mid,i;
+     
+        if(nums.size()==0)
+            return -1;
+            
+        for(i=0;i<nums.size() -1;i++)                                    //Finding Pivot element
+            {
+                if(nums[i] > nums[i+1])
+                    break;
+            }
+        
+         if(target<nums[0])                        // Array divided in 2 parts so check by comparing in which array we have to search
+             
+             {
+                 begin=i+1;
+                 mid=binarySearch(begin, end, nums, target);
+             }
+        
+        else
+            
+            {
+                end=i;
+                mid=binarySearch(begin, end, nums, target);
+            }
+        
+        return mid;
+    }
+};
