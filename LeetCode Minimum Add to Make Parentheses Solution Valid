@@ -1,0 +1,25 @@
+class Solution {
+public:
+    int minAddToMakeValid(string S) {
+        
+        int left=0,right=0,req;
+        
+        for(int i=0;i<S.length();i++)
+                {
+                    if(S[i]=='(')
+                        left=left+1;           //counting left paranthesis
+
+                    else
+                        {  
+                            if(left!=0)
+                            left=left-1;
+
+                            else
+                            right=right+1;         //counting right paranthesis
+                        }
+                }
+        
+        req=left+right;
+        return req;
+    }
+};Minimum Add to Make Parentheses Valid
