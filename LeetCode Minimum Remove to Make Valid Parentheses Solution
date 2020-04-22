@@ -1,0 +1,38 @@
+class Solution {
+public:
+    string minRemoveToMakeValid(string s) {
+        
+        stack<int> left;
+        stack<int> right;
+        
+        for(int i=0;i<s.length();i++)
+            {
+                  if(s[i]=='(')
+                      left.push(i);
+            
+                  if(s[i]==')')
+                  {
+                      if(!left.empty())
+                       left.pop();
+                      
+                      else
+                          right.push(i);
+                  }
+                   
+            }
+        
+        while(!left.empty())
+            {
+                      s.erase(left.top(),1);
+                      left.pop();
+            }
+        
+        while(!right.empty())
+        {
+            s.erase(right.top(),1); 
+                      right.pop();
+        }
+        
+        return s;
+    }
+};
