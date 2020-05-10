@@ -1,0 +1,29 @@
+class Solution {
+public:
+    bool isPerfectSquare(int num) {
+        
+        long long int high=num/2,low=1,sq,mid;
+
+        mid = low + (high-low)/2;
+        
+        if(num==1 || num==0)
+            return true;
+        
+        while(low<=high)
+            {
+             mid = low + (high-low)/2;
+                sq=mid*mid;
+
+               if(sq==num)
+                return true;
+            
+            else if(sq>num)
+                high=mid-1;
+            
+            else
+               low=mid+1;
+            }
+        
+        return false;
+    }
+};
