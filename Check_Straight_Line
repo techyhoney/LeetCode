@@ -14,7 +14,7 @@ public:
             if(left==0)
                return false;
             
-            slope = right/left;
+            slope=right/left;
             
             if((coordinates[i+2][1]-coordinates[i][1])/(coordinates[i+2][0]-coordinates[i][0])!=slope)
             {
